@@ -36,7 +36,7 @@ export default class AppClass extends Component {
       <div>
         <div>{this.state.counter2}</div>
         <button onClick={this.increase}>Click</button>
-        <BoxClass num={this.state.value} />
+        {this.state.counter2 < 3 && <BoxClass num={this.state.value} />}
       </div>
     );
   }
