@@ -10,15 +10,22 @@ export default class AppClass extends Component {
       num: 1,
       value: 0,
     };
+    console.log("constructure");
+  }
 
-    increase = () => {
-      this.setState({
-        counter2: this.state.counter2 + 1,
-        value: this.state.value + 1,
-      });
-    };
+  increase = () => {
+    this.setState({
+      counter2: this.state.counter2 + 1,
+      value: this.state.value + 1,
+    });
+  };
+
+  componentDidMount() {
+    console.log("componentDidMount");
+    //주로하는 일은 API호출을 한다
   }
   render() {
+    console.log("render");
     return (
       <div>
         <div>{this.state.counter2}</div>
