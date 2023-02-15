@@ -18,12 +18,18 @@ export default class AppClass extends Component {
       counter2: this.state.counter2 + 1,
       value: this.state.value + 1,
     });
+    console.log(this.state);
   };
 
   componentDidMount() {
     console.log("componentDidMount");
     //주로하는 일은 API호출을 한다
   }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate", this.state);
+  }
+
   render() {
     console.log("render");
     return (
