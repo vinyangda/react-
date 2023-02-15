@@ -1,15 +1,16 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "./Box";
 
 function App() {
   let counter = 0;
   const [counter2, setcounter2] = useState(0); // state에 초깃값을 넣어준다 => array를 반환해준다
-
+  const [value, setValue] = useState(0);
   const increase = () => {
     counter = counter + 1;
     setcounter2(counter2 + 1);
-    console.log("counter?", counter); // 상태가 계속 1이 찍힘
+    setValue(value + 2);
+    console.log("counter1", counter); // 상태가 계속 1이 찍힘
 
     //1. 유저가 버튼을 클릭한다
     //2. counter+1가 === 결국 1이 됨
@@ -23,7 +24,7 @@ function App() {
 
     //*변수는 re render 될 때마다 초기화가 된다
 
-    console.log(counter2); //상태가 계속 카운트 넘어가기 전이 찍힘
+    console.log("counter2", counter2); //상태가 계속 카운트 넘어가기 전이 찍힘
 
     // state의 비밀
     //state를 바꾸면으 UI를 재 렌더를 해준다 렌더링은 비싸다.
@@ -36,8 +37,21 @@ function App() {
     //대부분은 state 활용, 잠깐 받아야 하는 값은 변수 사용
   };
 
+  useEffect(() => {
+    console.log("useEffect first");
+  }, []);
+  // 인자를 2개를 받는다 >> 콜백함수, 배열
+  // 배열 안에 state가 없으면 componentDidMount() 처럼 작용한다
+  useEffect(() => {
+    console.log("useEffect second", counter2, value);
+  }, [counter2, value]);
+
+  // 배열 안에 state가 있으면
+  //componentDidMount() + componentDidUpdate() 처럼 작용한다
+
   return (
     <div>
+      {console.log("render in App.js")}
       <div>{counter}</div>
       <div>{counter2}</div>
       <button onClick={increase}>Click</button>
