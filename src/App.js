@@ -60,3 +60,7 @@ function App() {
 }
 
 export default App;
+
+//* React lifeCycle component는
+//function component에서는 사용할 수 없다
+//그래서 나온 것이 useEffect()
